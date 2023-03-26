@@ -1,6 +1,7 @@
 import { css, styled } from "stitches.config";
 
 import { reset } from "stitches-reset";
+import { RedditHeaderLink } from "./RedditHeaderLink";
 
 const Grid = styled(`div`, {
   display: `grid`,
@@ -20,7 +21,9 @@ const Header = styled(`header`, {
   background: "$mainBg",
   borderBottom: "1px solid $offgray",
   display: "flex",
-  justifyContent: "space-between",
+  alignItems: "center",
+  padding: "0 2.4rem",
+  // justifyContent: "space-between",
 });
 
 const Main = styled(`main`, {
@@ -36,7 +39,7 @@ const Wrapper = styled(`div`, {
   justifyContent: "center",
   gridTemplateColumns: "640px 312px",
   padding: "2rem 2.4rem",
-  height: "100%",
+  height: "calc(100%-48px)",
 });
 
 const Content = styled(`div`, {
@@ -47,6 +50,10 @@ const SideNav = styled(`div`, {
   gridArea: "sidenav",
 });
 
+const FilterButtonWrapper = styled(`div`, {
+  flexBasis: "270px",
+});
+
 interface Layout {
   children: React.ReactNode;
 }
@@ -55,12 +62,10 @@ export const Layout = ({ children }: Layout) => {
   return (
     <Grid>
       <Header>
-        <div>
-          <a>Reddit</a>
-        </div>
-        <div>
+        <RedditHeaderLink />
+        <FilterButtonWrapper>
           <button>Filter button</button>
-        </div>
+        </FilterButtonWrapper>
         <div>
           <input type="search" />
         </div>
