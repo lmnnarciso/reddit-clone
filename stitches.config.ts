@@ -9,6 +9,7 @@ import {
   redDark,
   greenDark,
 } from "@radix-ui/colors";
+
 export const {
   styled,
   css,
@@ -27,6 +28,9 @@ export const {
       ...blue,
       ...red,
       ...green,
+      mainBg: "rgb(26, 26, 27)",
+      offgray: "rgb(52, 53, 54)",
+      offwhite: "rgb(215, 218, 220)",
     },
   },
   media: {
@@ -34,6 +38,13 @@ export const {
   },
   utils: {
     marginX: (value: number) => ({ marginLeft: value, marginRight: value }),
+  },
+});
+
+export const globalStyles = globalCss({
+  "#__next, html, body": {
+    height: "100%",
+    fontSize: "62.5%",
   },
 });
 
