@@ -2,6 +2,13 @@ import { css, styled } from "stitches.config";
 
 import { reset } from "stitches-reset";
 import { RedditHeaderLink } from "./RedditHeaderLink";
+import {
+  HomeIcon,
+  CaretDownIcon,
+  MagnifyingGlassIcon,
+  DrawingPinFilledIcon,
+} from "@radix-ui/react-icons";
+import { Header } from "./Header/Header";
 
 const Grid = styled(`div`, {
   display: `grid`,
@@ -14,16 +21,6 @@ const Grid = styled(`div`, {
   gridTemplateColumns: "repeat(3, 1fr)",
   fontSize: "1.6rem",
   color: "$offwhite",
-});
-
-const Header = styled(`header`, {
-  gridArea: "header",
-  background: "$mainBg",
-  borderBottom: "1px solid $offgray",
-  display: "flex",
-  alignItems: "center",
-  padding: "0 2.4rem",
-  // justifyContent: "space-between",
 });
 
 const Main = styled(`main`, {
@@ -50,10 +47,6 @@ const SideNav = styled(`div`, {
   gridArea: "sidenav",
 });
 
-const FilterButtonWrapper = styled(`div`, {
-  flexBasis: "270px",
-});
-
 interface Layout {
   children: React.ReactNode;
 }
@@ -61,25 +54,7 @@ interface Layout {
 export const Layout = ({ children }: Layout) => {
   return (
     <Grid>
-      <Header>
-        <RedditHeaderLink />
-        <FilterButtonWrapper>
-          <button>Filter button</button>
-        </FilterButtonWrapper>
-        <div>
-          <input type="search" />
-        </div>
-        <div>
-          <div>
-            <a>link</a>
-            <a>link2</a>
-          </div>
-          <div>
-            <a></a>
-            <a>\</a>
-          </div>
-        </div>
-      </Header>
+      <Header />
       <Main>
         <Wrapper>
           <Content>main</Content>
