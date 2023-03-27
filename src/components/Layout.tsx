@@ -1,7 +1,6 @@
 import { css, styled } from "stitches.config";
 
 import { reset } from "stitches-reset";
-import { RedditHeaderLink } from "./RedditHeaderLink";
 import {
   HomeIcon,
   CaretDownIcon,

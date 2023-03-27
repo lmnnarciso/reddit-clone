@@ -4,7 +4,7 @@ import {
   MagnifyingGlassIcon,
 } from "@radix-ui/react-icons";
 import { styled } from "stitches.config";
-import { RedditHeaderLink } from "../RedditHeaderLink";
+import { RedditHeaderLink } from "./RedditHeaderLink";
 import { AdvertiseButton } from "./AdvertiseButton";
 import { Avatar } from "./Avatar";
 import { Button } from "./Button.styled";
