@@ -1,20 +1,14 @@
-import { css, styled } from "stitches.config";
-
-import { reset } from "stitches-reset";
-import {
-  HomeIcon,
-  CaretDownIcon,
-  MagnifyingGlassIcon,
-  DrawingPinFilledIcon,
-} from "@radix-ui/react-icons";
+import { styled } from "stitches.config";
 import { Header } from "./Header/Header";
+import { NewPostContainer } from "./Content/CreateNewPost";
+import { FilterContentContainer } from "./Content/FilterContentContainer";
 
 const Grid = styled(`div`, {
   display: `grid`,
   gridTemplateAreas: `
         "header header header"
         "main main main"`,
-  background: "black",
+  background: "$backdrop",
   height: "100%",
   gridTemplateRows: "48px 100%",
   gridTemplateColumns: "repeat(3, 1fr)",
@@ -24,7 +18,7 @@ const Grid = styled(`div`, {
 
 const Main = styled(`main`, {
   gridArea: "main",
-  background: "$blue10",
+  background: "$backdrop",
 });
 
 const Wrapper = styled(`div`, {
@@ -40,6 +34,9 @@ const Wrapper = styled(`div`, {
 
 const Content = styled(`div`, {
   gridArea: "content",
+  display: "flex",
+  flexDirection: "column",
+  gap: "1rem",
 });
 
 const SideNav = styled(`div`, {
@@ -56,7 +53,10 @@ export const Layout = ({ children }: Layout) => {
       <Header />
       <Main>
         <Wrapper>
-          <Content>main</Content>
+          <Content>
+            <NewPostContainer />
+            <FilterContentContainer />
+          </Content>
           <SideNav>side</SideNav>
         </Wrapper>
       </Main>

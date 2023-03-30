@@ -28,6 +28,7 @@ export const {
       ...blue,
       ...red,
       ...green,
+      backdrop: "rgb(3, 3, 3)",
       mainBg: "rgb(26, 26, 27)",
       offgray: "rgb(52, 53, 54)",
       offwhite: "rgb(215, 218, 220)",
@@ -45,6 +46,9 @@ export const globalStyles = globalCss({
   "#__next, html, body": {
     height: "100%",
     fontSize: "62.5%",
+  },
+  body: {
+    fontSize: "1.6rem",
   },
 });
 
