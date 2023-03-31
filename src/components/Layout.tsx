@@ -2,6 +2,8 @@ import { styled } from "stitches.config";
 import { Header } from "./Header/Header";
 import { NewPostContainer } from "./Content/CreateNewPost";
 import { FilterContentContainer } from "./Content/FilterContentContainer";
+import { RedditPremium } from "./RedditPremium/RedditPremium";
+import { CommunityCard } from "./RedditPremium/CommunityCard";
 
 const Grid = styled(`div`, {
   display: `grid`,
@@ -30,6 +32,7 @@ const Wrapper = styled(`div`, {
   gridTemplateColumns: "640px 312px",
   padding: "2rem 2.4rem",
   height: "calc(100%-48px)",
+  gap: "2rem",
 });
 
 const Content = styled(`div`, {
@@ -41,6 +44,9 @@ const Content = styled(`div`, {
 
 const SideNav = styled(`div`, {
   gridArea: "sidenav",
+  display: "flex",
+  flexDirection: "column",
+  gap: "1rem",
 });
 
 interface Layout {
@@ -57,7 +63,10 @@ export const Layout = ({ children }: Layout) => {
             <NewPostContainer />
             <FilterContentContainer />
           </Content>
-          <SideNav>side</SideNav>
+          <SideNav>
+            <RedditPremium />
+            <CommunityCard />
+          </SideNav>
         </Wrapper>
       </Main>
     </Grid>

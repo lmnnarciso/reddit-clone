@@ -32,6 +32,8 @@ export const {
       mainBg: "rgb(26, 26, 27)",
       offgray: "rgb(52, 53, 54)",
       offwhite: "rgb(215, 218, 220)",
+      brand: "#ff4500",
+      brandHover: "#ff7f51",
     },
   },
   media: {
