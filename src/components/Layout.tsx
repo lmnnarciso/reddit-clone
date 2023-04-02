@@ -4,6 +4,7 @@ import { NewPostContainer } from "./Content/CreateNewPost";
 import { FilterContentContainer } from "./Content/FilterContentContainer";
 import { RedditPremium } from "./RedditPremium/RedditPremium";
 import { CommunityCard } from "./RedditPremium/CommunityCard";
+import { Post } from "./Post/Post";
 
 const Grid = styled(`div`, {
   display: `grid`,
@@ -11,7 +12,7 @@ const Grid = styled(`div`, {
         "header header header"
         "main main main"`,
   background: "$backdrop",
-  height: "100%",
+  minHeight: "100%",
   gridTemplateRows: "48px 100%",
   gridTemplateColumns: "repeat(3, 1fr)",
   fontSize: "1.6rem",
@@ -62,6 +63,7 @@ export const Layout = ({ children }: Layout) => {
           <Content>
             <NewPostContainer />
             <FilterContentContainer />
+            <Post />
           </Content>
           <SideNav>
             <RedditPremium />

@@ -34,6 +34,13 @@ export const Button = styled("button", {
           // lighter version of $brand
         },
       },
+      gray: {
+        color: "$infoGray",
+        background: "none",
+        "&:hover": {
+          background: "$offgray",
+        },
+      },
     },
   },
   defaultVariants: {

@@ -32,6 +32,7 @@ export const {
       mainBg: "rgb(26, 26, 27)",
       offgray: "rgb(52, 53, 54)",
       offwhite: "rgb(215, 218, 220)",
+      infoGray: "rgb(129, 131, 132)",
       brand: "#ff4500",
       brandHover: "#ff7f51",
     },
@@ -48,6 +49,7 @@ export const globalStyles = globalCss({
   "#__next, html, body": {
     height: "100%",
     fontSize: "62.5%",
+    fontFamily: "'IBM Plex Sans', sans-serif",
   },
   body: {
     fontSize: "1.6rem",

@@ -11,6 +11,9 @@ export const Card = styled(DefaultStyleWrapper, {
       md: {
         width: "320px",
       },
+      lg: {
+        width: "640px",
+      },
     },
   },
   props: {
