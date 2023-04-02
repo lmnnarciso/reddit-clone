@@ -24,6 +24,11 @@ export const Button = styled("button", {
         borderRadius: "100rem",
       },
     },
+    size: {
+      full: {
+        width: "100%",
+      },
+    },
     color: {
       primary: {
         backgroundColor: "$brand",
@@ -32,6 +37,14 @@ export const Button = styled("button", {
         "&:hover": {
           backgroundColor: "$brandHover",
           // lighter version of $brand
+        },
+      },
+      outline: {
+        backgroundColor: "transparent",
+        color: "$offwhite",
+        border: "$offwhite 1px solid",
+        "&:hover": {
+          backgroundColor: "$offgray",
         },
       },
       gray: {

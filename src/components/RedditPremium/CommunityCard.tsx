@@ -1,4 +1,5 @@
 import { styled } from "stitches.config";
+import { Button } from "../shared/Button";
 import { Card } from "../shared/Card";
 import { Flex } from "../shared/Flex";
 
@@ -46,6 +47,20 @@ export const CommunityCard = () => {
         >
           Home
         </div>
+      </Flex>
+      <hr style={{ margin: "2rem" }} />
+      <Flex
+        direction="column"
+        css={{
+          gap: "1rem",
+        }}
+      >
+        <Button size="full" rounded="full">
+          Create Post
+        </Button>
+        <Button size="full" rounded="full" color="outline">
+          Create Community
+        </Button>
       </Flex>
     </Card>
   );
