@@ -1,12 +1,89 @@
+"use client";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { styled } from "stitches.config";
 import { LinkButton } from "../Header/LinkButton.styled";
 import { SvgIcon } from "../Header/SvgIcon.styled";
+import { SideNav, Wrapper } from "../Layout";
 import { Button } from "../shared/Button";
-import { Card } from "../shared/Card";
 import { Flex } from "../shared/Flex";
 import { Badge } from "../shared/Pill";
-import { PostModal } from "./PostModal";
+import { DownvoteSvg, Post, PostContent, UpvoteSvg, VoteButton } from "./Post";
 
+const Overlay = styled(AlertDialog.Overlay, {
+  backgroundColor: "$grayBackdrop",
+  position: "fixed",
+  inset: 0,
+  animation: "overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+});
+
+const Content = styled(AlertDialog.Content, {
+  color: "white",
+  backgroundColor: "$mainBg",
+  borderRadius: "6px",
+  boxShadow:
+    "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "90vw",
+  maxWidth: "1280px",
+  maxHeight: "none",
+  padding: "25px",
+  animation: "contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+
+  "&:focus": {
+    outline: "none",
+  },
+});
+
+const Title = styled(AlertDialog.Title, {
+  margin: 0,
+  color: "$mauve12",
+  fontSize: "17px",
+  fontWeight: "500",
+});
+
+const Description = styled(AlertDialog.Description, {
+  marginBottom: "20px",
+  color: "$mauve11",
+  fontSize: "15px",
+  lineHeight: 1.5,
+});
+
+const TitleBar = styled(Flex, {
+  minWidth: "100%",
+  marginTop: "-2.5rem",
+  marginLeft: "-2.5rem",
+  marginRight: "-2.5rem",
+  marginBottom: "2.5rem",
+  height: "48px",
+  padding: "0 3.2rem",
+  display: "flex",
+  alignItems: "center",
+  background: "$backdrop",
+  justifyContent: "space-between",
+});
+
+const TitleText = styled("h1", {
+  display: "block",
+  fontSize: "1.4rem",
+  fontWeight: 500,
+  fontFamily: "'IBM Plex Sans', sans-serif",
+});
+
+const PostTitleBar = () => {
+  return (
+    <TitleBar>
+      <Flex>
+        <TitleText>
+          Night Watch was an absolute masterpiece, even by Pratchett standards
+        </TitleText>
+      </Flex>
+      <Button>Close</Button>
+    </TitleBar>
+  );
+};
 const POST_DATA = {
   title: "Higher Salary or Higher position",
   content: `
@@ -19,41 +96,6 @@ const POST_DATA = {
   upvotes: 12,
   downvotes: 2,
   comments: [{}],
-};
-
-export const VoteButton = ({ children }: { children: React.ReactNode }) => {
-  const buttonStyle = {
-    background: "none",
-    padding: 0,
-  };
-  const hoverStyle = {
-    "&:hover": {
-      fill: "$brand",
-    },
-  };
-  return (
-    <Button css={buttonStyle}>
-      <SvgIcon
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        css={hoverStyle}
-      >
-        {children}
-      </SvgIcon>
-    </Button>
-  );
-};
-
-export const UpvoteSvg = () => {
-  return (
-    <path d="M12 22c5.514 0 10-4.486 10-10S17.514 2 12 2 2 6.486 2 12s4.486 10 10 10zm0-15 5 5h-4v5h-2v-5H7l5-5z"></path>
-  );
-};
-
-export const DownvoteSvg = () => {
-  return (
-    <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 15-5-5h4V7h2v5h4l-5 5z"></path>
-  );
 };
 
 const CommunityLink = () => {
@@ -89,7 +131,6 @@ const PostMetaInfo = () => {
     </Flex>
   );
 };
-
 const PostTitle = ({ title }: { title: string }) => {
   const Title = styled("h3", {
     fontSize: "1.8rem",
@@ -107,106 +148,23 @@ const PostTitle = ({ title }: { title: string }) => {
     </Flex>
   );
 };
-
-export const PostContent = ({ isViewed = false }: { isViewed: boolean }) => {
+export const PostModal = () => {
   const buttonStyle = {
     height: "100%",
     padding: "0.8rem",
   };
   return (
-    <Flex css={{ gap: "1rem" }}>
-      <Flex direction="column">
-        <div>
-          <VoteButton>
-            <UpvoteSvg />
-          </VoteButton>
-        </div>
-        <div>10</div>
-        <div>
-          <VoteButton>
-            <DownvoteSvg />
-          </VoteButton>
-        </div>
-      </Flex>
-      <Flex
-        direction="column"
-        css={{
-          gap: "0.6rem",
-        }}
-      >
-        <Flex direction="row" align="baseline">
-          <CommunityLink />
-          <PostMetaInfo />
-        </Flex>
-        <PostTitle title={POST_DATA.title} />
-        <div
-          style={{
-            maxHeight: isViewed ? "none" : "250px",
-            padding: "0.5rem 0.8rem 1rem 0.8rem",
-            overflow: isViewed ? "auto" : "hidden",
-            maskImage: isViewed
-              ? "none"
-              : "linear-gradient(180deg,#000 60%,transparent)",
-          }}
-          dangerouslySetInnerHTML={{ __html: POST_DATA.content }}
-        ></div>
-        <Flex
-          css={{
-            marginBottom: "-$y",
-            minHeight: "4rem",
-          }}
-        >
-          <div>
-            <Button color="gray" css={buttonStyle}>
-              <span>2 Comments</span>
-            </Button>
-          </div>
-          <div>
-            <Button color="gray" css={buttonStyle}>
-              <span>Award</span>
-            </Button>
-          </div>
-          <div>
-            <Button color="gray" css={buttonStyle}>
-              <span>Share</span>
-            </Button>
-          </div>
-          <div>
-            <Button color="gray" css={buttonStyle}>
-              <span>Save</span>
-            </Button>
-          </div>
-          <div>
-            <Button
-              css={buttonStyle}
-              color="gray"
-              style={{
-                transform: "translateY(0px)",
-              }}
-            >
-              <SvgIcon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
-              </SvgIcon>
-            </Button>
-          </div>
-        </Flex>
-      </Flex>
-    </Flex>
-  );
-};
-
-export const Post = () => {
-  return (
-    <Card
-      size="lg"
-      css={{
-        "&:hover": {
-          border: "1px solid $offwhite",
-          cursor: "pointer",
-        },
-      }}
-    >
-      <PostContent />
-    </Card>
+    <AlertDialog.Root open={true}>
+      <AlertDialog.Trigger asChild>
+        <button className="Button violet">Delete account</button>
+      </AlertDialog.Trigger>
+      <AlertDialog.Portal>
+        <Overlay />
+        <Content className="AlertDialogContent">
+          <PostTitleBar />
+          <PostContent isViewed={true} />
+        </Content>
+      </AlertDialog.Portal>
+    </AlertDialog.Root>
   );
 };

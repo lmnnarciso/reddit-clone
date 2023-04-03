@@ -30,6 +30,7 @@ const StyledHeader = styled(`header`, {
   padding: "0 2.4rem",
   width: "100%",
   gap: "0.8rem",
+  zIndex: 2,
   // justifyContent: "space-between",
 });
 

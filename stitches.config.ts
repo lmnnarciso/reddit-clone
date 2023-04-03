@@ -29,6 +29,7 @@ export const {
       ...red,
       ...green,
       backdrop: "rgb(3, 3, 3)",
+      grayBackdrop: "rgba(28, 28, 28)",
       mainBg: "rgb(26, 26, 27)",
       offgray: "rgb(52, 53, 54)",
       offwhite: "rgb(215, 218, 220)",

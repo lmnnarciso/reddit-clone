@@ -1,3 +1,4 @@
+"use client";
 import { styled } from "stitches.config";
 import { Header } from "./Header/Header";
 import { NewPostContainer } from "./Content/CreateNewPost";
@@ -5,6 +6,7 @@ import { FilterContentContainer } from "./Content/FilterContentContainer";
 import { RedditPremium } from "./RedditPremium/RedditPremium";
 import { CommunityCard } from "./RedditPremium/CommunityCard";
 import { Post } from "./Post/Post";
+import { PostModal } from "./Post/PostModal";
 
 const Grid = styled(`div`, {
   display: `grid`,
@@ -24,7 +26,7 @@ const Main = styled(`main`, {
   background: "$backdrop",
 });
 
-const Wrapper = styled(`div`, {
+export const Wrapper = styled(`div`, {
   display: "grid",
   gridTemplateAreas: `
     "content sidenav"
@@ -36,14 +38,14 @@ const Wrapper = styled(`div`, {
   gap: "2rem",
 });
 
-const Content = styled(`div`, {
+export const Content = styled(`div`, {
   gridArea: "content",
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
 });
 
-const SideNav = styled(`div`, {
+export const SideNav = styled(`div`, {
   gridArea: "sidenav",
   display: "flex",
   flexDirection: "column",
@@ -71,6 +73,7 @@ export const Layout = ({ children }: Layout) => {
           </SideNav>
         </Wrapper>
       </Main>
+      <PostModal />
     </Grid>
   );
 };
